@@ -40,9 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const pw = fd.get('password')?.toString();
       const conf = fd.get('confirm')?.toString();
 
-      if(!name || !email || !pw || !conf){ showToast('Preencha todos os campos.', false); return; }
+      if(!name || !email || !pw || !conf){ showToast('Preencha todos os campos.', false); return; }s
       if(pw.length < 6){ showToast('A senha precisa ter no mínimo 6 caracteres.', false); return; }
       if(pw !== conf){ showToast('As senhas não coincidem.', false); return; }
+      if (/\d/.test (name)){ showToast('Somente letras no nome', false); return; }
 
       const btn = registerForm.querySelector('button[type="submit"]');
       const original = btn.textContent;
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Login (login.html)
   const loginForm = document.getElementById('login-form');
-  if(loginForm){
+  if(loginForm){s
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(loginForm);
