@@ -348,3 +348,45 @@ body {
   .shop-container { padding: 25px 20px; }
   .fashion-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
 }
+
+/* --- 1. Bolinha da Vitrine/Loja (O estilo original) --- */
+.color-swatch {
+  width: 10px;
+  height: 10px;
+  margin: 0 auto; /* Centraliza horizontalmente */
+  display: block;
+  border-radius: 50%; /* Faz ficar redonda */
+  /* NENHUMA borda aqui, para ficar "chapado" como no design original */
+}
+
+/* --- 2. Bolinha de Preview do Admin --- */
+.color-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.color-select {
+  flex: 1;
+}
+
+.color-preview-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  /* Adicionamos uma borda suave aqui SÓ NO ADMIN para cores claras (como branco) não sumirem no fundo branco */
+  border: 1px solid rgba(0,0,0,0.1); 
+  background-color: transparent;
+  flex-shrink: 0; /* Garante que a bolinha não amasse */
+}
+
+/* Fundo xadrez para quando não houver cor selecionada no Admin */
+.color-preview-circle.empty {
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+                    linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+                    linear-gradient(45deg, transparent 75%, #ccc 75%), 
+                    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+}

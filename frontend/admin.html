@@ -14,7 +14,6 @@
         <h2 class="card-title">Painel de Produtos</h2>
         <p class="card-sub">Cadastre, edite e remova peças — imagens são redimensionadas automaticamente</p>
 
-        <!-- Formulário -->
         <form id="product-form" class="form-grid" enctype="multipart/form-data" novalidate>
           
           <label>Nome do Produto
@@ -25,14 +24,56 @@
             <input name="description" type="text" placeholder="Breve descrição" required>
           </label>
 
-          <label>Preço (R$)
-            <input name="price" type="number" step="0.01" placeholder="99.90" required>
-          </label>
+          <div style="display: flex; gap: 15px;">
+            <label style="flex: 1;">Preço (R$)
+              <input name="price" type="number" step="0.01" placeholder="99.90" required>
+            </label>
 
-          <label>Quantidade em Estoque
-            <input name="stock" type="number" min="0" placeholder="10" required>
-          </label>
+            <label style="flex: 1;">Estoque
+              <input name="stock" type="number" min="0" placeholder="10" required>
+            </label>
+          </div>
 
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            
+            <label style="flex: 1; min-width: 200px;">Cor Principal
+              <div class="color-input-wrapper">
+                <select id="primary_color" name="primary_color" class="color-select" required style="padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(var(--muted-300)/1); background: white;">
+                  <option value="" disabled selected>Selecione...</option>
+                  <option value="preto">Preto</option>
+                  <option value="branco">Branco / Off-White</option>
+                  <option value="bege">Bege / Nude</option>
+                  <option value="marrom">Marrom / Terra</option>
+                  <option value="café">Café</option>
+                  <option value="cinza">Cinza</option>
+                  <option value="azul_marinho">Azul Marinho</option>
+                  <option value="verde_militar">Verde Militar</option>
+                  <option value="vermelho">Vermelho / Marsala</option>
+                  <option value="rosa">Rosa / Salmão</option>
+                  <option value="mostarda">Mostarda</option>
+                  <option value="lilas">Lilás / Lavanda</option>
+                  <option value="estampado">Estampado</option>
+                </select>
+                <div id="preview-primary-circle" class="color-preview-circle empty" title="Prévia da Cor"></div>
+              </div>
+            </label>
+
+            <label style="flex: 1; min-width: 200px;">Cor Secundária
+              <div class="color-input-wrapper">
+                <select id="secondary_color" name="secondary_color" class="color-select" style="padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(var(--muted-300)/1); background: white;">
+                  <option value="" selected>Nenhuma</option>
+                  <option value="preto">Preto</option>
+                  <option value="branco">Branco / Off-White</option>
+                  <option value="bege">Bege / Nude</option>
+                  <option value="marrom">Marrom</option>
+                  <option value="dourado">Dourado</option>
+                  <option value="prateado">Prateado</option>
+                </select>
+                <div id="preview-secondary-circle" class="color-preview-circle empty" title="Prévia da Cor"></div>
+              </div>
+            </label>
+
+          </div>
           <label>Imagem
             <input id="image-input" name="image" type="file" accept="image/*" required>
           </label>

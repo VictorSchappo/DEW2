@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Três Laços — Coleção</title>
+  <title>Vestidos — Três Laços</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,12 +17,14 @@
   <header class="fashion-header">
     <div class="header-inner">
       <div class="logo-area">
-        <img src="img/logo.png" alt="Logo" style="height: 40px;">
+        <a href="loja.html">
+            <img src="img/logo.png" alt="Três Laços" style="height: 40px;">
+        </a>
       </div>
 
       <nav class="fashion-nav">
-        <a href="loja.html" class="active">PÁGINA PRINCIPAL</a>
-        <a href="vestidos.html">VESTIDOS</a>
+        <a href="loja.html">PÁGINA PRINCIPAL</a>
+        <a href="vestidos.html" class="active">VESTIDOS</a>
         <a href="blusa.html">BLUSAS</a>
         <a href="calcas.html">CALÇAS</a>
       </nav>
@@ -35,10 +37,17 @@
     </div>
   </header>
 
+  <div class="category-header">
+    <h1 class="category-title">Vestidos</h1>
+    <p class="category-subtitle">Peças exclusivas cadastradas na coleção.</p>
+  </div>
+
   <section class="filter-bar">
     <div class="filters-left">
+      <div class="filter-item">TAMANHO <span class="material-symbols-outlined">expand_more</span></div>
+      <div class="filter-item">COR <span class="material-symbols-outlined">expand_more</span></div>
       <div class="filter-item">PREÇO <span class="material-symbols-outlined">expand_more</span></div>
-      <button class="btn-apply">Aplicar filtro</button>
+      <button class="btn-apply">Aplicar filtros</button>
     </div>
     <div class="filters-right">
       <span>ORDENAR POR: <b>LANÇAMENTO</b></span>
@@ -48,7 +57,7 @@
 
   <main class="shop-container">
     <div id="fashion-grid" class="fashion-grid">
-      <p style="grid-column: 1/-1; text-align: center; margin-top: 50px;">Carregando coleção...</p>
+    <p style="grid-column: 1/-1; text-align: center; margin-top: 50px;">Carregando vestidos...</p>
     </div>
   </main>
 
