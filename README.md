@@ -1,120 +1,143 @@
-TRÊS LAÇOS STORE
+Aqui está todo o texto transformado em **Markdown organizado, limpo e profissional**:
 
-Sistema de E-commerce de Moda Feminina
+---
 
-Projeto desenvolvido como trabalho acadêmico para a disciplina de Desenvolvimento Web (Engenharia de Software). O objetivo é criar uma aplicação Full Stack que integra uma vitrine de produtos (Frontend) com um painel administrativo (Backend) para gestão de conteúdo, demonstrando a comunicação Cliente-Servidor.
+# **TRÊS LAÇOS STORE**
 
-🛠️ Tecnologias Utilizadas
+## *Sistema de E-commerce de Moda Feminina*
 
-Node.js & Express (Framework Backend)
+Projeto desenvolvido como trabalho acadêmico para a disciplina de **Desenvolvimento Web** (Engenharia de Software).
+O objetivo é criar uma aplicação **Full Stack**, integrando uma vitrine de produtos (Frontend) a um painel administrativo (Backend) para gestão de conteúdo, demonstrando a comunicação Cliente–Servidor.
 
-SQLite (Banco de Dados Local - Arquivo)
+---
 
-HTML5 (Semântico) & CSS3 (Interface e Estilização Responsiva)
+## 🛠️ **Tecnologias Utilizadas**
 
-JavaScript ES6+ (Lógica do Cliente e Servidor com Async/Await)
+* **Node.js & Express** – Backend e API
+* **SQLite** – Banco de dados local (arquivo)
+* **HTML5** – Estrutura e semântica
+* **CSS3** – Interface e estilização responsiva
+* **JavaScript ES6+** – Lógica cliente-servidor (Async/Await)
+* **Multer & Sharp** – Upload e processamento/redimensionamento de imagens
+* **Bcrypt** – Criptografia de senhas
 
-Multer & Sharp (Upload, processamento e redimensionamento de imagens)
+---
 
-Bcrypt (Segurança e Criptografia de senhas)
+## 📂 **Estrutura do Projeto**
 
-📂 Estrutura do Projeto
+* **loja.html** – Página pública (vitrine)
+* **admin.html** – Painel administrativo (CRUD)
+* **login.html** – Tela de autenticação
+* **criar-conta.html** – Registro de novos administradores
+* **server.js** – Servidor (API, banco SQLite, rotas)
+* **script.js** – Integração pelo Fetch API (Frontend ↔ Backend)
+* **db.sqlite** – Arquivo de banco de dados (gerado automaticamente)
+* **uploads/** – Pasta de imagens dos produtos
 
-loja.html – Página pública (Vitrine) onde os clientes visualizam os produtos.
+---
 
-admin.html – Painel administrativo para cadastro, edição e exclusão de produtos.
+## 🚀 **Funcionalidades**
 
-login.html – Página de autenticação para acesso restrito.
+* **Vitrine dinâmica** — Produtos são carregados automaticamente do banco
+* **CRUD completo no painel admin** — Criar, listar, editar e excluir
+* **Upload de imagens com otimização automática**
+* **Autenticação com senha criptografada (Hash)**
+* **Cálculo automático de parcelamento e precificação**
+* **Layout totalmente responsivo (mobile/desktop)**
 
-criar-conta.html – Página para registro de novos administradores.
+---
 
-server.js – Código do servidor (API, conexão com banco SQLite e rotas).
+## 👩‍💻 **Equipe**
 
-script.js – Lógica de integração (Fetch API) entre o Frontend e o Backend.
+* **[Nome do Aluno 1]** – Backend e Banco de Dados
+* **[Nome do Aluno 2]** – Frontend e Design
+* **[Nome do Aluno 3]** – Integração e Documentação
 
-db.sqlite – Arquivo do banco de dados (gerado automaticamente na primeira execução).
+---
 
-uploads/ – Pasta onde as imagens dos produtos são armazenadas.
+## 📖 **Como Executar**
 
-🚀 Funcionalidades
+Siga as instruções abaixo para rodar o projeto localmente.
 
-Vitrine Dinâmica: Os produtos cadastrados no banco aparecem automaticamente na loja.
+> ⚠️ É necessário ter o **Node.js** instalado.
 
-Painel Admin (CRUD): Funcionalidade completa de Criar, Ler, Atualizar e Deletar produtos.
+---
 
-Upload de Imagens: Envio de fotos com redimensionamento automático para otimização.
+### **1️⃣ Escolher a pasta onde salvar**
 
-Autenticação: Sistema de login e registro com senha criptografada (Hash).
+Abra o terminal e navegue até o diretório desejado:
 
-Cálculo Automático: Parcelamento e precificação exibidos na vitrine.
-
-Responsividade: Layout adaptável para dispositivos móveis e desktop.
-
-👩‍💻 Equipe
-
-[Nome do Aluno 1] – [Ex: Backend e Banco de Dados]
-
-[Nome do Aluno 2] – [Ex: Frontend e Design]
-
-[Nome do Aluno 3] – [Ex: Integração e Documentação]
-
-📖 Como Executar
-
-Siga este passo a passo para rodar o projeto na sua máquina local. Diferente de sites apenas HTML, este projeto requer o Node.js instalado.
-
-1️⃣ Escolher a Pasta onde Salvar
-
-No terminal, navegue até a pasta onde deseja baixar o projeto:
-
+```bash
 cd C:\Users\SeuUsuario\Documents\Projetos
+```
 
+---
 
-2️⃣ Clonar o Repositório (ou Baixar)
+### **2️⃣ Clonar o repositório (ou baixar o .zip)**
 
-Se estiver usando Git:
+Com Git:
 
-git clone [https://github.com/SeuUsuario/tres-lacos.git](https://github.com/SeuUsuario/tres-lacos.git)
+```bash
+git clone https://github.com/SeuUsuario/tres-lacos.git
+```
 
+Ou apenas extraia o arquivo `.zip`.
 
-Ou apenas extraia a pasta .zip se tiver baixado manualmente.
+---
 
-3️⃣ Entrar na Pasta do Projeto
+### **3️⃣ Entrar na pasta do projeto**
 
+```bash
 cd tres-lacos
+```
 
+---
 
-4️⃣ Instalar as Dependências (IMPORTANTE)
+### **4️⃣ Instalar dependências**
 
-Como é um projeto Node.js, precisamos baixar as bibliotecas (Express, SQLite, etc.) listadas no package.json. Execute:
+Necessário para instalar Express, SQLite, Multer, Sharp, etc.:
 
+```bash
 npm install
+```
 
+---
 
-Isso criará a pasta node_modules automaticamente.
+### **5️⃣ Iniciar o servidor**
 
-5️⃣ Iniciar o Servidor
-
-Agora vamos colocar o Backend para rodar:
-
+```bash
 npm start
+```
 
+Você verá:
 
-Você verá a mensagem no terminal: "Servidor rodando na porta 3000".
+```
+Servidor rodando na porta 3000
+```
 
-6️⃣ Acessar no Navegador
+---
 
-Com o terminal aberto e o servidor rodando, acesse os links:
+### **6️⃣ Acessar no navegador**
 
-Vitrine (Loja): http://localhost:3000/loja.html
+* **Vitrine (Loja):**
+  [http://localhost:3000/loja.html](http://localhost:3000/loja.html)
 
-Painel Admin: http://localhost:3000/admin.html
+* **Painel Admin:**
+  [http://localhost:3000/admin.html](http://localhost:3000/admin.html)
 
-📝 Observações Importantes
+---
 
-Banco de Dados: O arquivo db.sqlite será criado automaticamente na primeira vez que o servidor rodar.
+## 📝 **Observações Importantes**
 
-Primeiro Acesso: Para acessar o admin, crie primeiro uma conta em /criar-conta.html.
+* **db.sqlite** será criado automaticamente ao rodar o servidor pela primeira vez.
+* Para acessar o painel admin, crie uma conta primeiro em:
+  `http://localhost:3000/criar-conta.html`
+* Imagens enviadas ficam na pasta **uploads/**.
 
-Imagens: As fotos enviadas ficam salvas localmente na pasta uploads dentro do projeto.
+---
 
-Univille - Engenharia de Software - 2025
+### **Univille – Engenharia de Software – 2025**
+
+---
+
+Se quiser, posso transformar isso em **PDF**, **README.md**, **versão estilizada**, ou **modelo para GitHub**. 😄
