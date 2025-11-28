@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Três Laços Store — Admin Produtos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="center-col">
+      <div class="card large-card admin-card">
+
+        <h2 class="card-title">Painel de Produtos</h2>
+        <p class="card-sub">Cadastre, edite e remova peças — imagens são redimensionadas automaticamente</p>
+
+        <!-- Formulário -->
+        <form id="product-form" class="form-grid" enctype="multipart/form-data" novalidate>
+          
+          <label>Nome do Produto
+            <input name="title" type="text" placeholder="Ex: Vestido Floral" required>
+          </label>
+
+          <label>Descrição
+            <input name="description" type="text" placeholder="Breve descrição" required>
+          </label>
+
+          <label>Preço (R$)
+            <input name="price" type="number" step="0.01" placeholder="99.90" required>
+          </label>
+
+          <label>Quantidade em Estoque
+            <input name="stock" type="number" min="0" placeholder="10" required>
+          </label>
+
+          <label>Imagem
+            <input id="image-input" name="image" type="file" accept="image/*" required>
+          </label>
+
+          <div id="preview-wrapper" class="preview-wrapper">
+            <img id="preview" class="preview-img" src="" alt="">
+            <div id="preview-meta" class="preview-meta"></div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Cadastrar Produto</button>
+            <button id="refresh-list" type="button" class="btn outline">Atualizar Lista</button>
+          </div>
+
+        </form>
+
+        <hr class="divider">
+
+        <h3 class="section-title">Produtos Cadastrados</h3>
+        
+        <div id="products-list" class="products-grid"></div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

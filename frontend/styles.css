@@ -1,0 +1,350 @@
+:root{
+  /* Paleta da marca Três Laços */
+  --bg-100: 207 187 166;       /* Bege Fundo Gradiente */
+  --card-bg: 255 253 251;      /* Off-white (Creme) */
+  --accent-700: 65 49 38;      /* Marrom Café (Destaque forte) */
+  --accent-500: 94 73 61;      /* Marrom Médio */
+  --muted-300: 230 224 215;    /* Cinza/Bege Borda */
+  --text-900: 31 23 18;        /* Texto Quase Preto */
+  --muted-600: 150 135 125;    /* Texto Secundário */
+
+  --radius: 14px;
+  --shadow-lg: 0 18px 35px rgba(33,22,14,0.12);
+  --shadow-soft: 0 8px 20px rgba(33,22,14,0.06);
+}
+
+/* RESET */
+* { box-sizing: border-box; }
+body, html { margin:0; padding:0; }
+
+/* ====== BACKGROUND GLOBAL (Login/Admin) ====== */
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(180deg, rgba(var(--bg-100)/1) 0%, rgb(207, 193, 176) 100%);
+  color: rgb(var(--text-900));
+  min-height: 100vh;
+  /* Por padrão centraliza (Login/Admin), mas a Loja sobrescreve isso */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* ====== CONTAINERS GLOBAIS ====== */
+.page {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-col {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ====== CARD GENÉRICO ====== */
+.card {
+  width: 420px;
+  max-width: 96%;
+  border-radius: 18px;
+  padding: 28px;
+  background: rgb(var(--card-bg));
+  box-shadow: var(--shadow-lg);
+  transition: all .25s ease;
+}
+.large-card {
+  width: 100%;
+  max-width: 900px;
+  padding: 34px;
+}
+
+/* ====== TÍTULOS ====== */
+.card-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  text-align: center;
+  margin: 6px 0 8px;
+}
+.card-sub {
+  text-align: center;
+  font-size: 14px;
+  color: rgb(var(--muted-600));
+  margin-bottom: 20px;
+}
+
+/* ====== FORMULÁRIOS ====== */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.form-grid label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(var(--text-900));
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-grid input, .form-grid textarea, .form-grid select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(var(--muted-300)/1);
+  background: white;
+  font-size: 14px;
+  outline: none;
+  transition: border .15s ease, box-shadow .15s ease;
+}
+.form-grid input:focus {
+  border-color: rgba(var(--accent-700)/0.35);
+  box-shadow: 0 6px 18px rgba(65,49,38,0.07);
+}
+
+/* ====== BOTÕES ====== */
+.btn {
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-soft);
+}
+.btn:active { transform: translateY(1px); }
+
+.btn.primary {
+  background: linear-gradient(180deg, rgba(var(--accent-700)/1), rgba(var(--accent-500)/1));
+  color: white;
+}
+.btn.outline {
+  background: transparent;
+  border-color: rgba(var(--accent-700)/0.22);
+  color: rgb(var(--text-900));
+}
+
+/* ====== TOAST ====== */
+.toast {
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: white;
+  font-weight: 600;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(var(--accent-700)/1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* ------- ADMIN EXTRAS ------- */
+.admin-card { max-width: 900px; }
+.preview-wrapper { display: flex; gap: 12px; align-items: center; }
+.preview-img { display: none; width: 120px; height: auto; border-radius: 8px; box-shadow: var(--shadow-soft); }
+.preview-meta { color: rgb(var(--muted-600)); font-size: 13px; }
+.divider { margin: 18px 0; opacity: 0.12; border: none; border-bottom: 1px solid rgba(var(--accent-700) / 0.15); }
+.form-actions { display: flex; gap: 12px; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.product-item { background: white; border-radius: 14px; padding: 14px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 8px; transition: .2s; }
+.product-img { width: 100%; border-radius: 12px; object-fit: cover; height: 160px; box-shadow: var(--shadow-soft); }
+
+/* =======================================================
+   ESTILO DA LOJA (VITRINE) - TEMA TRÊS LAÇOS
+   ======================================================= */
+
+/* Sobrescreve o body global para tirar o flex center e usar fundo creme */
+.shop-body {
+  background: rgb(var(--card-bg)); 
+  color: rgb(var(--text-900));
+  display: block; 
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Cabeçalho --- */
+.fashion-header {
+  padding: 20px 40px;
+  background: rgb(var(--card-bg));
+  border-bottom: 1px solid rgba(var(--accent-700), 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.fashion-nav a {
+  text-decoration: none;
+  color: rgb(var(--text-900)); 
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 15px;
+  letter-spacing: 0.8px;
+  transition: color 0.3s ease;
+}
+
+.fashion-nav a:hover, 
+.fashion-nav a.active {
+  color: rgb(var(--accent-700)); 
+  font-weight: 700;
+}
+
+.header-icons {
+  display: flex;
+  gap: 18px;
+  color: rgb(var(--text-900));
+}
+.header-icons span { font-size: 24px; transition: color 0.2s; cursor: pointer; }
+.header-icons a { color: inherit; text-decoration: none; }
+.header-icons span:hover { color: rgb(var(--accent-700)); }
+
+/* --- Barra de Filtros --- */
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: rgba(var(--bg-100), 0.15); /* Fundo bege bem suave */
+  border-bottom: 1px solid rgba(var(--accent-700), 0.1);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(var(--muted-600));
+}
+
+.filters-left { display: flex; gap: 25px; align-items: center; }
+.filter-item { display: flex; align-items: center; cursor: pointer; gap: 4px; transition: color 0.2s; }
+.filter-item:hover { color: rgb(var(--accent-700)); }
+
+.btn-apply {
+  background: transparent;
+  border: 1px solid rgb(var(--accent-700));
+  color: rgb(var(--accent-700));
+  padding: 6px 16px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-apply:hover {
+  background: rgb(var(--accent-700));
+  color: #fff;
+}
+
+.filters-right { display: flex; align-items: center; cursor: pointer; color: rgb(var(--text-900)); }
+
+/* --- Grid da Vitrine --- */
+.shop-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 50px 40px;
+}
+
+.fashion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 40px;
+}
+
+/* --- Card de Produto --- */
+.fashion-card {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  box-shadow: none; 
+  padding: 0;
+  cursor: pointer;
+}
+
+.card-img-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(var(--muted-300), 0.4);
+}
+
+.fashion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.fashion-card:hover .fashion-img {
+  transform: scale(1.04);
+}
+
+.badge-off {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: rgb(var(--accent-700));
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.card-info { margin-top: 18px; text-align: center; }
+.card-title-fashion {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: rgb(var(--text-900));
+  margin-bottom: 8px;
+}
+
+.card-prices {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: rgb(var(--muted-600));
+  margin-right: 10px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+}
+.current-price { font-weight: 700; color: rgb(var(--accent-700)); }
+
+.installments {
+  font-size: 11px;
+  color: rgb(var(--muted-600));
+  margin-bottom: 12px;
+}
+
+.color-swatch {
+  width: 10px;
+  height: 10px;
+  background: rgb(var(--accent-500));
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+}
+
+/* Responsivo Mobile */
+@media(max-width: 768px) {
+  .card { width: 95%; padding: 22px; }
+  .fashion-header { padding: 15px 20px; }
+  .fashion-nav { display: none; } 
+  .filter-bar { display: none; }
+  .shop-container { padding: 25px 20px; }
+  .fashion-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+}

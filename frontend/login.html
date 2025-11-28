@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Três Laços Store — Login</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="center-col">
+      <div class="card large-card">
+        <!-- LOGO NO CARD (alteração feita aqui) -->
+        <img src="img/logo.png" alt="Três Laços logo" class="logo-card">
+
+        <h2 class="card-title">Entrar</h2>
+        <p class="card-sub">Acesse sua conta</p>
+
+        <form id="login-form" class="form-grid" novalidate>
+          <label>E-mail
+            <input name="email" type="email" placeholder="seu@email.com" required>
+          </label>
+          <label>Senha
+            <input name="password" type="password" placeholder="Sua senha" required>
+          </label>
+
+          <button type="submit" class="btn primary block">Entrar</button>
+        </form>
+
+        <p class="foot">Não tem uma conta? <a href="criar-conta.html">Cadastre-se</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "_note_name": "Nome do projeto",
+  "name": "tres-lacos-backend",
+  "_note_version": "Versão do projeto",
+  "version": "1.0.0",
+  "_note_description": "Descrição do projeto",
+  "description": "Backend projeto - loja de roupas",
+  "_note_arquivo": "Arquivo principal e scripts",
+  "main": "server.js",
+  "scripts": {
+    "_note_rodarServer": "Scripts para rodar o servidor",
+    "start": "node server.js",
+    "_note_dev": "Script para desenvolvimento",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.32.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
