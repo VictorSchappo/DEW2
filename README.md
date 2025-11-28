@@ -1,7 +1,3 @@
-Aqui está todo o texto transformado em **Markdown organizado, limpo e profissional**:
-
----
-
 # **TRÊS LAÇOS STORE**
 
 ## *Sistema de E-commerce de Moda Feminina*
