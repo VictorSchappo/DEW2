@@ -1,6 +1,6 @@
 :root{
   /* cores da arte */
-  --bg-100: 207 187 166;
+  --bg-100: 252 204 148;
   --card-bg: 255 253 251;
   --accent-700: 65 49 38;
   --accent-500: 94 73 61;
@@ -184,4 +184,15 @@ body{
   color:#fff;
   box-shadow:0 8px 24px rgba(0,0,0,0.12);
   font-weight:600;
+}
+.img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 80px; 
+}
+.img img {
+  width: 200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
 }
