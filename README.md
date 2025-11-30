@@ -22,7 +22,7 @@ A Loja Três Laços é uma plataforma fictícia de venda de roupas femininas que
 
 * HTML5 (semântica)
 * CSS3 (Flexbox, Grid, responsividade e animações)
-* JavaScript (Vanilla) — lógica da vitrine, filtros, carrinho e integração com a API
+* JavaScript — lógica da vitrine, filtros, carrinho e integração com a API
 
 **Back-end**
 
