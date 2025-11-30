@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Três Laços — Coleção</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body class="shop-body">
+    <header class="fashion-header">
+      <div class="header-inner">
+        <div class="logo-area">
+          <img src="img/logo3lacos.png" alt="Logo" style="height: 45px" />
+        </div>
+
+        <nav class="fashion-nav">
+          <a href="loja.html" class="active">PÁGINA PRINCIPAL</a>
+          <a href="vestidos.html">VESTIDOS</a>
+          <a href="blusas.html">BLUSAS / CROPPEDS</a>
+          <a href="calcas.html">CALÇAS / SAIAS</a>
+        </nav>
+
+        <div class="header-icons">
+          <span class="material-symbols-outlined">search</span>
+
+          <a
+            href="admin.html"
+            title="Painel Administrativo"
+            style="color: inherit; text-decoration: none"
+          >
+            <span class="material-symbols-outlined">settings</span>
+          </a>
+
+          <a href="login.html">
+            <span class="material-symbols-outlined">person</span>
+          </a>
+
+          <span class="material-symbols-outlined">shopping_bag</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="home-hero">
+      <div class="hero-overlay">
+        <h1 class="hero-title">Essência & Elegância</h1>
+        <p class="hero-subtitle">Descubra peças que contam a sua história.</p>
+        <a href="#fashion-grid" class="btn primary">Ver Coleção</a>
+      </div>
+    </section>
+
+    <!-- BARRA DE FILTROS -->
+    <section class="filter-bar">
+      <div class="filters-left">
+        
+        <!-- Botão PREÇO com Dropdown -->
+        <div class="filter-item" id="price-filter-btn">
+          PREÇO <span class="material-symbols-outlined">expand_more</span>
+          
+          <!-- O MODAL (CAIXINHA) -->
+          <div class="price-dropdown" id="price-dropdown">
+            <h5 class="price-title">Faixa de preço</h5>
+            
+            <!-- AQUI ESTAVAM FALTANDO OS CAMPOS -->
+            <div class="price-inputs">
+              <input type="number" id="price-min" placeholder="R$ Mín">
+              <span class="price-separator">até</span>
+              <input type="number" id="price-max" placeholder="R$ Máx">
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão Aplicar (AO LADO, FORA DO MODAL) -->
+        <button id="btn-apply-filter" class="btn-apply">APLICAR</button>
+
+      </div>
+
+      <div class="filters-right">
+        <span>ORDENAR POR: <b>LANÇAMENTO</b></span>
+        <span class="material-symbols-outlined">expand_more</span>
+      </div>
+    </section>
+
+    <main class="shop-container">
+      <div id="fashion-grid" class="fashion-grid">
+        <div class="loading-state">
+          <span class="material-symbols-outlined spin-icon"
+            >progress_activity</span
+          >
+          <p>Carregando as novidades...</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>TRÊS LAÇOS</h3>
+          <p>Moda atemporal para mulheres autênticas.</p>
+        </div>
+        <div class="footer-col">
+          <h3>NEWSLETTER</h3>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Seu melhor e-mail" />
+            <button type="button">Assinar</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Três Laços Store. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

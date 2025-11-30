@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Três Laços Store — Criar Conta</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700;800&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="center-col">
+        <div class="card">
+          <img src="img/logo3lacos.png" class="logo-card" alt="Logo" />
+
+          <h2 class="card-title">Criar Conta</h2>
+          <p class="card-sub">Junte-se à nossa comunidade exclusiva</p>
+
+          <form id="register-form" class="form-grid">
+            <label
+              >Nome Completo
+              <input name="name" type="text" placeholder="Seu nome" required />
+            </label>
+
+            <label
+              >E-mail
+              <input
+                name="email"
+                type="email"
+                placeholder="seu@email.com"
+                required
+              />
+            </label>
+
+            <label
+              >Senha
+              <input
+                name="password"
+                type="password"
+                placeholder="Mínimo 6 caracteres"
+                required
+              />
+            </label>
+
+            <label
+              >Confirmar Senha
+              <input
+                name="confirm"
+                type="password"
+                placeholder="Digite a senha novamente"
+                required
+              />
+            </label>
+
+            <button type="submit" class="btn primary block">Cadastrar</button>
+          </form>
+
+          <p class="foot">
+            Já possui uma conta? <a href="login.html">Fazer login</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
