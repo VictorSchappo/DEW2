@@ -20,6 +20,7 @@ if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 const app = express();
 app.use(cors());
 app.use(express.json());
+// Serve o frontend estático e a pasta de uploads
 app.use('/', express.static(path.join(__dirname, '..', 'frontend')));
 app.use('/uploads', express.static(UPLOAD_DIR));
 
@@ -56,26 +57,27 @@ let db;
     );
   `);
 
-  // [NOVO] ATUALIZAÇÃO DO BANCO DE DADOS (MIGRATION)
-  // Tenta adicionar as colunas de cor caso elas não existam
-  try {
-    await db.exec("ALTER TABLE products ADD COLUMN primary_color TEXT");
-    console.log("Coluna 'primary_color' adicionada com sucesso.");
-  } catch (e) {
-    // Se der erro, é provável que a coluna já exista, então ignoramos
-  }
+  // [MIGRATION] Adicionar colunas novas se não existirem
+  const addColumn = async (colName) => {
+    try {
+      await db.exec(`ALTER TABLE products ADD COLUMN ${colName} TEXT`);
+      console.log(`Coluna '${colName}' adicionada com sucesso.`);
+    } catch (e) {
+      // Ignora erro se a coluna já existir
+    }
+  };
 
-  try {
-    await db.exec("ALTER TABLE products ADD COLUMN secondary_color TEXT");
-    console.log("Coluna 'secondary_color' adicionada com sucesso.");
-  } catch (e) {
-    // Ignora erro se já existir
-  }
+  await addColumn('primary_color');
+  await addColumn('secondary_color');
+  
+  // [NOVO] Adicionando Categoria e Seção no banco
+  await addColumn('category');
+  await addColumn('section');
 
   console.log("Banco SQLite carregado e atualizado!");
 })();
 
-/* =============== MULTER =============== */
+/* =============== MULTER (Upload de Imagens) =============== */
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
@@ -121,34 +123,38 @@ app.post('/api/auth/login', async (req, res) => {
 /* --- POST criar produto --- */
 app.post('/api/products', upload.single('image'), async (req, res) => {
   try {
-    // [NOVO] Pegamos também as cores do corpo da requisição
-    const { title, description, price, stock, primary_color, secondary_color } = req.body;
+    // [NOVO] Recebendo category e section
+    const { title, description, price, stock, primary_color, secondary_color, category, section } = req.body;
 
     if (!title || !price || !stock)
-      return res.status(400).json({ error: "Dados incompletos" });
+      return res.status(400).json({ error: "Dados incompletos (Título, Preço e Estoque são obrigatórios)" });
 
-    if (!req.file)
-      return res.status(400).json({ error: "Imagem obrigatória" });
+    // Tratamento de imagem
+    let filename = null;
+    if (req.file) {
+        filename = uuidv4() + ".jpg";
+        const filepath = path.join(UPLOAD_DIR, filename);
+        await sharp(req.file.buffer)
+          .resize(800, 800, { fit: "cover" })
+          .jpeg({ quality: 85 })
+          .toFile(filepath);
+    } else {
+        return res.status(400).json({ error: "Imagem obrigatória" });
+    }
 
-    const filename = uuidv4() + ".jpg";
-    const filepath = path.join(UPLOAD_DIR, filename);
-
-    await sharp(req.file.buffer)
-      .resize(800, 800, { fit: "cover" })
-      .jpeg({ quality: 85 })
-      .toFile(filepath);
-
-    // [NOVO] Adicionamos as cores no comando INSERT
+    // [NOVO] Inserindo no banco com as novas colunas
     const result = await db.run(
-      `INSERT INTO products (title, description, price, stock, image_path, primary_color, secondary_color)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [title, description, price, stock, filename, primary_color, secondary_color]
+      `INSERT INTO products (
+          title, description, price, stock, image_path, 
+          primary_color, secondary_color, category, section
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [title, description, price, stock, filename, primary_color, secondary_color, category, section]
     );
 
     res.json({
       id: result.lastID,
       title, description, price, stock,
-      primary_color, secondary_color, // Devolvemos na resposta
+      primary_color, secondary_color, category, section,
       image_url: "/uploads/" + filename
     });
 
@@ -196,11 +202,12 @@ app.put('/api/products/:id', upload.single('image'), async (req, res) => {
     const product = await db.get("SELECT * FROM products WHERE id = ?", [id]);
     if (!product) return res.status(404).json({ error: "Produto não encontrado." });
 
-    // [NOVO] Pegamos as cores aqui também
-    const { title, description, price, stock, primary_color, secondary_color } = req.body;
+    // [NOVO] Recebendo campos novos
+    const { title, description, price, stock, primary_color, secondary_color, category, section } = req.body;
 
     let newImagePath = product.image_path;
 
+    // Se enviou nova imagem, substitui a antiga
     if (req.file) {
       if (product.image_path) {
         const old = path.join(UPLOAD_DIR, product.image_path);
@@ -215,12 +222,12 @@ app.put('/api/products/:id', upload.single('image'), async (req, res) => {
       newImagePath = filename;
     }
 
-    // [NOVO] Atualizamos a query SQL para salvar as cores
-    // Usamos "??" para manter o valor antigo se o novo não for enviado
+    // [NOVO] Atualizando query SQL
+    // Usamos "??" para manter o valor antigo se o novo for null/undefined
     await db.run(`
       UPDATE products SET
         title = ?, description = ?, price = ?, stock = ?, image_path = ?,
-        primary_color = ?, secondary_color = ?
+        primary_color = ?, secondary_color = ?, category = ?, section = ?
       WHERE id = ?
     `, [
       title ?? product.title,
@@ -228,8 +235,10 @@ app.put('/api/products/:id', upload.single('image'), async (req, res) => {
       price !== undefined ? parseFloat(price) : product.price,
       stock !== undefined ? parseInt(stock) : product.stock,
       newImagePath,
-      primary_color ?? product.primary_color,     // Nova cor ou antiga
-      secondary_color ?? product.secondary_color, // Nova cor ou antiga
+      primary_color ?? product.primary_color,
+      secondary_color ?? product.secondary_color,
+      category ?? product.category,  // <--- Novo campo
+      section ?? product.section,    // <--- Novo campo
       id
     ]);
 
@@ -241,6 +250,8 @@ app.put('/api/products/:id', upload.single('image'), async (req, res) => {
       stock: stock ?? product.stock,
       primary_color: primary_color ?? product.primary_color,
       secondary_color: secondary_color ?? product.secondary_color,
+      category: category ?? product.category,
+      section: section ?? product.section,
       image_url: "/uploads/" + newImagePath
     });
 

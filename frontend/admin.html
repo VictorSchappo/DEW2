@@ -1,105 +1,222 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Três Laços Store — Admin Produtos</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <main class="page">
-    <section class="center-col">
-      <div class="card large-card admin-card">
-
-        <h2 class="card-title">Painel de Produtos</h2>
-        <p class="card-sub">Cadastre, edite e remova peças — imagens são redimensionadas automaticamente</p>
-
-        <form id="product-form" class="form-grid" enctype="multipart/form-data" novalidate>
-          
-          <label>Nome do Produto
-            <input name="title" type="text" placeholder="Ex: Vestido Floral" required>
-          </label>
-
-          <label>Descrição
-            <input name="description" type="text" placeholder="Breve descrição" required>
-          </label>
-
-          <div style="display: flex; gap: 15px;">
-            <label style="flex: 1;">Preço (R$)
-              <input name="price" type="number" step="0.01" placeholder="99.90" required>
-            </label>
-
-            <label style="flex: 1;">Estoque
-              <input name="stock" type="number" min="0" placeholder="10" required>
-            </label>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Três Laços Store — Admin Produtos</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <main class="page">
+      <section class="center-col">
+        <div class="card large-card admin-card">
+          <div class="admin-header-top">
+            <a href="loja.html" class="btn-back">
+              <span class="material-symbols-outlined">arrow_back</span>
+              Voltar para a Loja
+            </a>
           </div>
 
-          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            
-            <label style="flex: 1; min-width: 200px;">Cor Principal
-              <div class="color-input-wrapper">
-                <select id="primary_color" name="primary_color" class="color-select" required style="padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(var(--muted-300)/1); background: white;">
+          <h2 class="card-title">Painel de Produtos</h2>
+          <p class="card-sub">
+            Cadastre, edite e remova peças — imagens são redimensionadas
+            automaticamente
+          </p>
+
+          <form
+            id="product-form"
+            class="form-grid"
+            enctype="multipart/form-data"
+            novalidate
+          >
+            <div
+              style="
+                display: flex;
+                gap: 15px;
+                background: #fdfbf7;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px dashed #e0dcd5;
+              "
+            >
+              <label style="flex: 1"
+                >Categoria (Página)
+                <select
+                  name="category"
+                  required
+                  style="border-color: var(--accent-700)"
+                >
                   <option value="" disabled selected>Selecione...</option>
-                  <option value="preto">Preto</option>
-                  <option value="branco">Branco / Off-White</option>
-                  <option value="bege">Bege / Nude</option>
-                  <option value="marrom">Marrom / Terra</option>
-                  <option value="café">Café</option>
-                  <option value="cinza">Cinza</option>
-                  <option value="azul_marinho">Azul Marinho</option>
-                  <option value="verde_militar">Verde Militar</option>
-                  <option value="vermelho">Vermelho / Marsala</option>
-                  <option value="rosa">Rosa / Salmão</option>
-                  <option value="mostarda">Mostarda</option>
-                  <option value="lilas">Lilás / Lavanda</option>
-                  <option value="estampado">Estampado</option>
+                  <option value="vestidos">Vestidos</option>
+                  <option value="blusas">Blusas</option>
+                  <option value="cropped">Cropped</option>
+                  <option value="calcas">Calças</option>
+                  <option value="saias">Saias</option>
                 </select>
-                <div id="preview-primary-circle" class="color-preview-circle empty" title="Prévia da Cor"></div>
+              </label>
+
+              <label style="flex: 1"
+                >Local de Exibição
+                <select name="section">
+                  <option value="padrao" selected>Padrão (Grid Normal)</option>
+                  <option value="destaque">Destaque (Home - Topo)</option>
+                  <option value="oferta">Oferta Especial</option>
+                </select>
+              </label>
+            </div>
+            <label
+              >Nome do Produto
+              <input
+                name="title"
+                type="text"
+                placeholder="Ex: Vestido Floral"
+                required
+              />
+            </label>
+
+            <label
+              >Descrição
+              <input
+                name="description"
+                type="text"
+                placeholder="Breve descrição"
+                required
+              />
+            </label>
+
+            <div style="display: flex; gap: 15px">
+              <label style="flex: 1"
+                >Preço (R$)
+                <input
+                  name="price"
+                  type="number"
+                  step="0.01"
+                  placeholder="99.90"
+                  required
+                />
+              </label>
+
+              <label style="flex: 1"
+                >Estoque
+                <input
+                  name="stock"
+                  type="number"
+                  min="0"
+                  placeholder="10"
+                  required
+                />
+              </label>
+            </div>
+
+            <!-- SELETOR DE CORES EXPANDIDO -->
+            <label style="flex: 1; min-width: 200px"
+              >Cor Principal
+              <div class="color-input-wrapper">
+                <select id="primary_color" name="primary_color" required>
+                  <option value="" disabled selected>Selecione...</option>
+
+                  <optgroup label="Neutras">
+                    <option value="branco">Branco / Off-White</option>
+                    <option value="bege">Bege / Nude / Creme</option>
+                    <option value="cinza">Cinza / Prata</option>
+                    <option value="preto">Preto</option>
+                    <option value="marrom">Marrom / Café</option>
+                    <option value="terracota">Terracota</option>
+                  </optgroup>
+
+                  <optgroup label="Cores Vivas">
+                    <option value="amarelo">Amarelo</option>
+                    <option value="azul">Azul Royal</option>
+                    <option value="azul_marinho">Azul Marinho</option>
+                    <option value="azul_claro">Azul Claro / Bebê</option>
+                    <option value="turquesa">Azul Turquesa</option>
+                    
+                    <option value="laranja">Laranja</option>
+                    <option value="coral">Coral</option>
+                    
+                    <option value="lilas">Lilás / Lavanda</option>
+                    <option value="roxo">Roxo / Uva</option>
+                    
+                    <option value="rosa">Rosa Pink</option>
+                    <option value="rosa_claro">Rosa Bebê</option>
+                    <option value="fucsia">Fúcsia / Magenta</option>
+                    
+                    <option value="verde">Verde Bandeira</option>
+                    <option value="verde_militar">Verde Militar / Oliva</option>
+                    <option value="verde_menta">Verde Menta</option>
+                    
+                    <option value="vermelho">Vermelho</option>
+                    <option value="vinho">Vinho / Marsala</option>
+                    <option value="mostarda">Mostarda</option>
+                  </optgroup>
+
+                  <optgroup label="Especiais">
+                    <option value="dourado">Dourado</option>
+                    <option value="prateado">Prateado</option>
+                    <option value="estampado">Estampado</option>
+                  </optgroup>
+                </select>
+                <div
+                  id="preview-primary-circle"
+                  class="color-preview-circle empty"
+                ></div>
               </div>
             </label>
 
-            <label style="flex: 1; min-width: 200px;">Cor Secundária
+            <label style="flex: 1; min-width: 200px"
+              >Cor Secundária
               <div class="color-input-wrapper">
-                <select id="secondary_color" name="secondary_color" class="color-select" style="padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(var(--muted-300)/1); background: white;">
+                <select id="secondary_color" name="secondary_color">
                   <option value="" selected>Nenhuma</option>
                   <option value="preto">Preto</option>
-                  <option value="branco">Branco / Off-White</option>
-                  <option value="bege">Bege / Nude</option>
-                  <option value="marrom">Marrom</option>
+                  <option value="branco">Branco</option>
+                  <option value="bege">Bege</option>
                   <option value="dourado">Dourado</option>
                   <option value="prateado">Prateado</option>
                 </select>
-                <div id="preview-secondary-circle" class="color-preview-circle empty" title="Prévia da Cor"></div>
+                <div
+                  id="preview-secondary-circle"
+                  class="color-preview-circle empty"
+                ></div>
               </div>
             </label>
 
-          </div>
-          <label>Imagem
-            <input id="image-input" name="image" type="file" accept="image/*" required>
-          </label>
+            <label
+              >Imagem
+              <input
+                id="image-input"
+                name="image"
+                type="file"
+                accept="image/*"
+              />
+            </label>
 
-          <div id="preview-wrapper" class="preview-wrapper">
-            <img id="preview" class="preview-img" src="" alt="">
-            <div id="preview-meta" class="preview-meta"></div>
-          </div>
+            <div id="preview-wrapper" class="preview-wrapper">
+              <img id="preview" class="preview-img" src="" alt="" />
+              <div id="preview-meta" class="preview-meta"></div>
+            </div>
 
-          <div class="form-actions">
-            <button type="submit" class="btn primary">Cadastrar Produto</button>
-            <button id="refresh-list" type="button" class="btn outline">Atualizar Lista</button>
-          </div>
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Salvar Produto</button>
+              <button id="refresh-list" type="button" class="btn outline">
+                Atualizar Lista
+              </button>
+            </div>
+          </form>
 
-        </form>
+          <hr class="divider" />
 
-        <hr class="divider">
+          <h3 class="section-title">Produtos Cadastrados</h3>
 
-        <h3 class="section-title">Produtos Cadastrados</h3>
-        
-        <div id="products-list" class="products-grid"></div>
+          <div id="products-list" class="products-grid"></div>
+        </div>
+      </section>
+    </main>
 
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

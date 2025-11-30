@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Vestidos — Três Laços</title>
+    <title>Blusas — Três Laços</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
 
@@ -23,25 +23,19 @@
       <div class="header-inner">
         <div class="logo-area">
           <a href="loja.html">
-            <img
-              src="img/logo3lacos.png"
-              alt="Três Laços"
-              style="height: 45px"
-            />
+            <img src="img/logo3lacos.png" alt="Logo" style="height: 45px" />
           </a>
         </div>
 
         <nav class="fashion-nav">
           <a href="loja.html">PÁGINA PRINCIPAL</a>
-          <a href="vestidos.html" class="active">VESTIDOS</a>
-          <a href="blusas.html">BLUSAS / CROPPEDS</a>
+          <a href="vestidos.html">VESTIDOS</a>
+          <a href="blusas.html" class="active">BLUSAS / CROPPEDS</a>
           <a href="calcas.html">CALÇAS / SAIAS</a>
         </nav>
 
         <div class="header-icons">
-          <span class="material-symbols-outlined" title="Pesquisar"
-            >search</span
-          >
+          <span class="material-symbols-outlined">search</span>
 
           <a
             href="admin.html"
@@ -55,22 +49,20 @@
           <a href="login.html"
             ><span class="material-symbols-outlined">person</span></a
           >
-          <span class="material-symbols-outlined" title="Sacola"
-            >shopping_bag</span
-          >
+          <span class="material-symbols-outlined">shopping_bag</span>
         </div>
       </div>
     </header>
 
     <div class="category-header">
-      <h1 class="category-title">Vestidos</h1>
+      <h1 class="category-title">Blusas & Croppeds</h1>
       <p class="category-subtitle">
-        Elegância e fluidez para todos os momentos
+        Versatilidade e sofisticação para compor seu look
       </p>
       <div class="category-divider"></div>
     </div>
 
-    <section class="filter-bar">
+     <section class="filter-bar">
       <div class="filters-left">
         
         <!-- Botão PREÇO com Dropdown -->
@@ -103,25 +95,33 @@
 
     <main class="shop-container">
       <div id="fashion-grid" class="fashion-grid">
-        <div
-          style="
-            grid-column: 1/-1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 50px;
-            color: var(--muted-600);
-          "
-        >
-          <span
-            class="material-symbols-outlined"
-            style="font-size: 40px; margin-bottom: 10px"
-            >checkroom</span
+        <div class="loading-state">
+          <span class="material-symbols-outlined spin-icon"
+            >progress_activity</span
           >
-          <p>Carregando a coleção de vestidos...</p>
+          <p>Carregando coleção de blusas...</p>
         </div>
       </div>
     </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>TRÊS LAÇOS</h3>
+          <p>Moda atemporal para mulheres autênticas.</p>
+        </div>
+        <div class="footer-col">
+          <h3>NEWSLETTER</h3>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Seu melhor e-mail" />
+            <button type="button">Assinar</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Três Laços Store. Todos os direitos reservados.</p>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>
