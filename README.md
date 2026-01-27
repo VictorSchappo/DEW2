@@ -172,7 +172,7 @@ https://api.whatsapp.com/send?phone={WHATSAPP_NUMBER}&text={MENSAGEM_ENCODE}
 * Armazenamento de imagens em CDN (S3 / Cloud Storage) para produção.
 * Testes automatizados (unitários e de integração).
 * Internacionalização (i18n) e melhorias de acessibilidade (WCAG).
-
+    
 ---
 
 ## 10. Autoria
@@ -180,5 +180,3 @@ https://api.whatsapp.com/send?phone={WHATSAPP_NUMBER}&text={MENSAGEM_ENCODE}
 Desenvolvido por **[VICTOR SCHAPPO, ASAFE IVAN, IGOR GRABOWSKI, HENRIQUE MELO E VINICYUS CESAR]** como parte da disciplina de Desenvolvimento Web.
 
 ---
-
-Se quiser, eu gero agora os arquivos básicos (`server.js`, `script.js`, `styles.css` e páginas HTML) prontos para download. É isso que você quer?
